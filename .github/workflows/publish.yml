@@ -38,7 +38,7 @@ jobs:
     - name: NuGet Login
       uses: nuget/login@v1
       with:
-        owner: schmaiki
+        user: schmaiki
 
     - name: Push to NuGet.org
       run: dotnet nuget push "./nupkg/*.nupkg" --source https://api.nuget.org/v3/index.json --skip-duplicate
