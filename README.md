@@ -161,11 +161,14 @@ public class MyService
 
 Die Bereitstellung bei NuGet.org erfolgt vollautomatisch über GitHub Actions. Der entsprechende Workflow befindet sich unter [publish.yml](file:///.github/workflows/publish.yml).
 
-### Voraussetzungen für den GitHub-Workflow:
-1. **NuGet API-Key:** Erstellen Sie einen API-Key auf [NuGet.org](https://www.nuget.org) mit Berechtigungen zum Pushen Ihres Pakets.
-2. **Repository Secret:** Hinterlegen Sie diesen API-Key in den Einstellungen Ihres GitHub-Repositorys unter **Settings > Secrets and variables > Actions** mit dem Namen `NUGET_API_KEY`.
+### Voraussetzungen für den GitHub-Workflow (Trusted Publishing via OIDC):
+1. **Konfiguration auf NuGet.org:**
+   - Navigieren Sie in Ihrem NuGet.org-Konto zu **Trusted Publishing**.
+   - Fügen Sie einen neuen *Trusted Publisher* hinzu.
+   - Geben Sie den Repository-Inhaber (GitHub-Organisation oder Benutzer), den Repository-Namen sowie den exakten Namen des Workflows (`publish.yml`) an.
+2. **Keine Repository Secrets erforderlich:** Die Authentifizierung erfolgt über OIDC via GitHubs Identity Provider. Es müssen keine statischen API-Schlüssel in GitHub hinterlegt oder rotiert werden.
 
 ### Workflow auslösen:
-- **Automatisch:** Der Workflow startet automatisch, sobald ein Tag mit dem Format `v*` (z. B. `v1.0.0`) auf den Repository-Zweig gepusht wird.
+- **Automatisch:** Der Workflow startet automatisch, sobald ein Tag mit dem Format `v*` (z. B. `v1.0.0`) auf das Repository gepusht wird.
 - **Manuell:** Sie können den Workflow über die Registerkarte **Actions** in GitHub manuell triggern (`workflow_dispatch`).
 
