@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="src/CoreVitals.Resilience/CoreVitals.Resilience.csproj" />
+  <Project Path="tests/CoreVitals.Resilience.Tests/CoreVitals.Resilience.Tests.csproj" />
+</Solution>
